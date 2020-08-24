@@ -14,22 +14,23 @@ export class Tab2Page {
 
   constructor(private router:Router, private socket: Socket) {}
 
+  // Creates response handler which will automatically navigate to the control page on successful BattleBot identification
   ngOnInit() {
-    var that = this;
+    var outerScope = this;
     this.socket.on('response', function(data) {
 
       console.log('recieve: ' + data);
-      that.type = "Loaded Application Type: " + data;
-      that.loading = true;
+      outerScope.type = "Loaded Application Type: " + data;
+      outerScope.loading = true;
 
       console.log("routing")
-      that.router.navigateByUrl('tabs/' + data)
+      outerScope.router.navigateByUrl('tabs/' + data)
 
     });
   }
 
+  // Attempts connection to server
   ionViewWillEnter() {
-      var that = this;
       console.log("initialising")
       this.socket.connect();
 
@@ -37,6 +38,7 @@ export class Tab2Page {
 
   }
 
+  // Variable cleanup on route change
   ionViewWillLeave() {
     this.loading = false;
     this.time = false;
@@ -44,12 +46,4 @@ export class Tab2Page {
 
     this.socket.disconnect();
   }
-
-
-/*
-  go() {
-    console.log("routing")
-    this.router.navigateByUrl('tabs/test')
-  }
-*/
 }

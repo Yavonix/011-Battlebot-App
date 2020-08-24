@@ -15,29 +15,31 @@ export class TestPage {
   constructor(private socket: Socket) { }
 
   ngOnInit() {
-    var that = this;
+    var outerScope = this;
+
+    // Adds any incoming messages to list. List is then displayed on html.
     this.socket.on('echob', function(data) {
       console.log('recieve: ' + data);
-      that.items.push(data);
+      outerScope.items.push(data);
     });
 
+    // Checks if server successfully connected. When state is false, the loading bar does not show
     this.socket.on('connectb', function(data) {
       console.log('connect');
-      that.state = false;
+      outerScope.state = false;
     });
   }
 
+  // Initiates connection
   ionViewWillEnter() {
-    var that = this;
-
+    var outerScope = this;
     this.socket.connect();
-
     this.socket.emit('connectr', 'connect');
   }
 
+  // Variable cleanup
   ionViewWillLeave() {
     this.socket.disconnect();
-
     this.state = true;
   }
 

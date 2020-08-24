@@ -33,49 +33,54 @@ export class BotPage {
   constructor(private socket: Socket, private insomnia: Insomnia, public toastController: ToastController) {
  }
 
- async presentToast(message:string) {
-     const toast = await this.toastController.create({
-       message: message,
-       duration: 2000,
-       mode: "ios",
-       color: "light",
-       showCloseButton: true
-     });
-     toast.present();
-   }
+  // Used for callouts and errors
+  async presentToast(message:string) {
+      const toast = await this.toastController.create({
+        message: message,
+        duration: 2000,
+        mode: "ios",
+        color: "light",
+        showCloseButton: true
+      });
+      toast.present();
+    }
 
- clipboard(code:any) {
-   const el = document.createElement('textarea');
-   el.value = code;
-   document.body.appendChild(el);
-   el.select();
-   document.execCommand('copy');
-   document.body.removeChild(el);
+  // Function to copy text to the clipboard
+  clipboard(code:any) {
+    const el = document.createElement('textarea');
+    el.value = code;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
 
-   this.presentToast("Copied to clipboard.");
- }
+    this.presentToast("Copied to clipboard.");
+  }
 
- refreshupdate() {
-   if (this.nrefresh) {
-     this.refresh = this.nrefresh;
+  // Restarts gamepad listener
+  refreshupdate() {
+    if (this.nrefresh) {
+      this.refresh = this.nrefresh;
 
-     if (this.x) {
-       clearInterval(this.x);
-       this.x = setInterval(() => { this.reportOnGamepad(); }, this.refresh);
-     }
-   }
- }
+      if (this.x) {
+        clearInterval(this.x);
+        this.x = setInterval(() => { this.reportOnGamepad(); }, this.refresh);
+      }
+    }
+  }
 
+  // Runs on route initialisation. Receiver for handshake with server
   ngOnInit() {
-    var that = this;
+    var outerScope = this;
     this.socket.on('connectb', function(data) {
-      var then = that;
+      var then = outerScope;
       console.log('connect');
-      that.state = false;
+      outerScope.state = false;
 
-      that.manager.on('move', function (evt, data) {
+      outerScope.manager.on('move', function (evt, data) {
         console.log(data.angle.degree, data.force);
 
+        // Sends joystick position to server. --uncomplete--
         if (then.skip === false) {
           then.socket.emit('js', [data.angle.degree, data.force]);
           then.skip = true;
@@ -86,47 +91,50 @@ export class BotPage {
       });
     });
 
+    // Displays url data
     this.socket.on('zbar', function(data) {
-      that.urls = data;
+      outerScope.urls = data;
     });
 
+    // Creates onscreen joystick
     let options = {
-    zone: document.getElementById('zone_joystick'),
-    color: 'white',
-    size: 160
+      zone: document.getElementById('zone_joystick'),
+      color: 'white',
+      size: 160
     };
     this.manager = nipplejs.create(options);
-
   }
 
+  // Runs when the route is navigated to
   ionViewWillEnter() {
-
+    // Toggles insomnia on so screen does not sleep
     this.insomnia.keepAwake().then(
       () => console.log('insomnia keepAwake success'),
       () => this.presentToast("Insomnia Active Error.")
     );
 
-    var that = this;
-
+    var outerScope = this;
+    // Connects to server
     this.socket.connect();
-
+    // Begins handshake with server
     this.socket.emit('connectr', 'connect');
 
+    // Controller handling
     this.interval = setInterval(function(){
-     if(that.canGame() !== null) {
-       if (that.controller === false) {
-           that.controller = true;
-           that.x = setInterval(() => { that.reportOnGamepad(); }, that.refresh);
+     if(outerScope.canGame() !== null) {
+       if (outerScope.controller === false) {
+           outerScope.controller = true;
+           outerScope.x = setInterval(() => { outerScope.reportOnGamepad(); }, outerScope.refresh);
          console.log("creating interval");
 
-         that.presentToast("Controller Connected.");
+         outerScope.presentToast("Controller Connected.");
        }
      } else {
-       if (that.controller === true) {
-         that.controller = false;
-         clearInterval(that.x);
+       if (outerScope.controller === true) {
+         outerScope.controller = false;
+         clearInterval(outerScope.x);
          console.log("clearing interval");
-         that.presentToast("Controller Disconnected.");
+         outerScope.presentToast("Controller Disconnected.");
        }
      }
    },1000);
@@ -140,6 +148,7 @@ export class BotPage {
 
   }
 
+  // Disposes variables on route change
   ionViewWillLeave() {
     this.socket.disconnect();
 
@@ -163,12 +172,12 @@ export class BotPage {
     return navigator.getGamepads()[0];
   }
 
-
-
   reportOnGamepad() {
 
+    // Gets the connected gamepad
     this.gp = navigator.getGamepads()[0];
 
+    // Gets HTML elements so outerScope their styles can be changed on an individual basis.
     let circle = document.getElementsByClassName("circle") as HTMLCollectionOf<HTMLElement>;
     let circle2 = document.getElementsByClassName("circle2") as HTMLCollectionOf<HTMLElement>;
     let up = document.getElementById("up") as HTMLElement;
@@ -187,12 +196,15 @@ export class BotPage {
     let triggerlargeright = document.getElementById("triggerlargeright") as HTMLElement;
 
     if (this.gp || this.state) {
+
+    // Loops through joystick axis
     for(var i=0;i<this.gp.axes.length; i+=2) {
         if (i === 0) {
           this.currentl = [this.gp.axes[i], this.gp.axes[i+1]];
 
           if (this.currentl[0] !== this.oldl[0] || this.currentl[1] !== this.oldl[1]) {
             this.oldl = [this.gp.axes[i], this.gp.axes[i+1]];
+            // Sends left joystick axis
             this.socket.emit('commandl', [this.gp.axes[i], this.gp.axes[i+1]]);
           }
 
@@ -206,12 +218,13 @@ export class BotPage {
             this.oldr = [this.gp.axes[i], this.gp.axes[i+1]];
             this.socket.emit('commandr', [this.gp.axes[i], this.gp.axes[i+1]]);
           }
-
+            // Sends right joystick axis
           circle2[0].style.left = (290+(15*this.gp.axes[i])).toString() + "px";
           circle2[0].style.top = (110+(15*this.gp.axes[i+1])).toString() + "px";
         }
       }
 
+    // Introducing the worlds stupidest conditional display logic. Cause im lazy.
     for(var i=0;i<this.gp.buttons.length;i++) {
         if ((i+1) === 13) {
           if(this.gp.buttons[i].pressed) {
