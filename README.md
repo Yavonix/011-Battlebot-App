@@ -4,7 +4,11 @@ Uploaded as past of my `something awesome` project for UNSW HS1917.
 
 Is an ionic angular mobile app which communicates to a python server using websockets. Built with the intention of being a cross-platform remote control for small diy robots, specifically the CCGS Robotics BattleBots.
 
-Demo site is available [here](https://fir-ccgs-battlebot-app.web.app/tabs/tab1).
+## Downloads
+
+Latest android demo download available [here](https://github.com/Yavonix/011-Battlebot-App/releases/latest).
+
+Website demo is available [here](https://fir-ccgs-battlebot-app.web.app/tabs/tab1).
 
 #### Repo Structure
 - **Concept Art**. Located under ```/adobe illustrator```. Contains the design inspiration. 
