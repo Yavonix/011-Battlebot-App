@@ -1,0 +1,23 @@
+<ion-content>
+<div class="container">
+  <div class="gl-container">
+    <div class="glitch" data-text="CCGS Robotics">CCGS Robotics</div>
+
+    <p>Loading</p>
+    <br>
+    <ng-container *ngIf="loading == true;">
+    <p>{{type}}</p>
+    </ng-container>
+
+    <ng-container *ngIf="loading == false;">
+    <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+    </ng-container>
+
+  </div>
+
+  <ng-container *ngIf="loading == true;">
+  <ion-progress-bar type="indeterminate"></ion-progress-bar>
+  </ng-container>
+
+</div>
+</ion-content>

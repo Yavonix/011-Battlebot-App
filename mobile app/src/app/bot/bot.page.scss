@@ -1,0 +1,260 @@
+.divl {
+  background-color: red;
+  height: 100px;
+  width: 100px;
+}
+
+#zone_joystick {
+  position: fixed;
+  top: 25vh;
+  left: 15vw;
+  height: 75vh;
+  width: 85vw;
+}
+
+
+#display {
+  left: 20px;
+  height: auto;
+  width: 500px;
+  position: relative;
+}
+
+.circle {
+
+  position: absolute;
+  top: 110px;
+  left: 130px;
+  height: 75px;
+  width: 75px;
+  shape-outside: circle();
+  clip-path: circle();
+  background: linear-gradient(to top right, #ff30fb, #02eef2);
+}
+
+.circle2 {
+
+  position: absolute;
+  top: 110px;
+  left: 290px;
+  height: 75px;
+  width: 75px;
+  shape-outside: circle();
+  clip-path: circle();
+  background: linear-gradient(to top left, #ff30fb, #02eef2);
+}
+
+#up {
+  transition: 1s;
+  position: absolute;
+  top: 45px;
+  left: 100px;
+  height: 18px;
+  width: 18px;
+  shape-outside: circle();
+  clip-path: circle();
+  background-color: white;
+  text-align: center;
+}
+
+#left {
+  transition: 1s;
+  position: absolute;
+  top: 70px;
+  left: 75px;
+  height: 18px;
+  width: 18px;
+  shape-outside: circle();
+  clip-path: circle();
+  background-color: white;
+  text-align: center;
+}
+
+#down {
+  transition: 1s;
+  position: absolute;
+  top: 95px;
+  left: 100px;
+  height: 18px;
+  width: 18px;
+  shape-outside: circle();
+  clip-path: circle();
+  background-color: white;
+  text-align: center;
+}
+
+#right {
+  transition: 1s;
+  position: absolute;
+  top: 70px;
+  left: 125px;
+  height: 18px;
+  width: 18px;
+  shape-outside: circle();
+  clip-path: circle();
+  background-color: white;
+  text-align: center;
+}
+
+#triangle {
+  transition: 1s;
+  position: absolute;
+  top: 45px;
+  left: 380px;
+  height: 18px;
+  width: 18px;
+  shape-outside: circle();
+  clip-path: circle();
+  background-color: white;
+  text-align: center;
+}
+
+#circle {
+  transition: 1s;
+  position: absolute;
+  top: 70px;
+  left: 405px;
+  height: 18px;
+  width: 18px;
+  shape-outside: circle();
+  clip-path: circle();
+  background-color: white;
+  text-align: center;
+}
+
+#cross {
+  transition: 1s;
+  position: absolute;
+  top: 95px;
+  left: 380px;
+  height: 18px;
+  width: 18px;
+  shape-outside: circle();
+  clip-path: circle();
+  background-color: white;
+  text-align: center;
+}
+
+#square {
+  transition: 1s;
+  position: absolute;
+  top: 70px;
+  left: 355px;
+  height: 18px;
+  width: 18px;
+  shape-outside: circle();
+  clip-path: circle();
+  background-color: white;
+  text-align: center;
+}
+
+#share {
+  transition: 1s;
+  position: absolute;
+  top: 40px;
+  left: 150px;
+  height: 18px;
+  width: 18px;
+  shape-outside: circle();
+  clip-path: circle();
+  background-color: white;
+  text-align: center;
+}
+
+#options {
+  transition: 1s;
+  position: absolute;
+  top: 40px;
+  left: 330px;
+  height: 18px;
+  width: 18px;
+  shape-outside: circle();
+  clip-path: circle();
+  background-color: white;
+  text-align: center;
+}
+
+#triggerlarge {
+  transition: 1s;
+  position: absolute;
+  top: 10px;
+  left: 62px;
+  height: 15px;
+  width: 50px;
+
+  background-color: white;
+  text-align: center;
+
+  -ms-transform: rotate(-20deg); /* IE 9 */
+  -webkit-transform: rotate(-20deg); /* Safari */
+  transform: rotate(-20deg);
+
+  border-radius: 25px;
+}
+
+#triggersmall {
+  transition: 1s;
+  position: absolute;
+  top: 30px;
+  left: 62px;
+  height: 10px;
+  width: 50px;
+
+  background-color: white;
+  text-align: center;
+
+  -ms-transform: rotate(-20deg); /* IE 9 */
+  -webkit-transform: rotate(-20deg); /* Safari */
+  transform: rotate(-20deg);
+
+  border-radius: 25px;
+}
+
+
+
+
+
+
+
+#triggerlargeright {
+  transition: 1s;
+  position: absolute;
+  top: 10px;
+  left: 385px;
+  height: 15px;
+  width: 50px;
+
+  background-color: white;
+  text-align: center;
+
+  -ms-transform: rotate(20deg); /* IE 9 */
+  -webkit-transform: rotate(20deg); /* Safari */
+  transform: rotate(20deg);
+
+  border-radius: 25px;
+}
+
+#triggersmallright {
+  transition: 1s;
+  position: absolute;
+  top: 30px;
+  left: 385px;
+  height: 10px;
+  width: 50px;
+
+  background-color: white;
+  text-align: center;
+
+  -ms-transform: rotate(20deg); /* IE 9 */
+  -webkit-transform: rotate(20deg); /* Safari */
+  transform: rotate(20deg);
+
+  border-radius: 25px;
+}
+
+
+
+
+#display {
+    zoom: 0.6;
+}

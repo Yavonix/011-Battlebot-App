@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-title>Battlebot Controller</ion-title>
+  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="state == true;">
+<ion-progress-bar type="indeterminate"></ion-progress-bar>
+  </ng-container>
+
+
+  <ion-item lines="none">
+    <ion-icon slot="start" color="medium" name="swap"></ion-icon>
+    <ion-label>Swipe left or right to bring up a joystick.</ion-label>
+  </ion-item>
+
+
+
+  <ion-item>
+    <ion-label position="floating">Gamepad Polling Rate (ms).</ion-label>
+    <ion-input clearInput [(ngModel)]="nrefresh"></ion-input>
+  </ion-item>
+
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col>
+        Current:
+      </ion-col>
+      <ion-col>
+        {{refresh}}
+      </ion-col>
+      <ion-col>
+        <ion-button expand="block" (click)="refreshupdate()">Update</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ng-container *ngIf="controller == true;">
+
+    <div id="display">
+        <img src="../assets/images/Controller Low Res.png" alt="Controller" width="100%">
+
+        <div class="circle"></div>
+        <div class="circle2"></div>
+
+        <div id="up"></div>
+        <div id="down"></div>
+        <div id="left"></div>
+        <div id="right"></div>
+
+        <div id="triangle"></div>
+        <div id="circle"></div>
+        <div id="square"></div>
+        <div id="cross"></div>
+
+        <div id="share"></div>
+        <div id="options"></div>
+
+        <div id="triggerlarge"></div>
+        <div id="triggersmall"></div>
+
+        <div id="triggerlargeright"></div>
+        <div id="triggersmallright"></div>
+
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="urls.length > 0;">
+  <ion-list lines="none">
+    <ion-list-header>
+      <ion-label>QR CODES:</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let code of urls">
+      <ion-button (click)="clipboard(code)"><ion-icon name="clipboard"></ion-icon></ion-button>&nbsp;&nbsp;{{code}}
+    </ion-item>
+  </ion-list>
+  </ng-container>
+
+  <div id="zone_joystick"></div>
+
+</ion-content>

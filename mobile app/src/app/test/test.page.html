@@ -1,0 +1,49 @@
+<ion-header>
+
+  <ion-toolbar mode="ios">
+    <ion-title>Chat Room</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ng-container *ngIf="state == true;">
+  <ion-progress-bar type="indeterminate"></ion-progress-bar>
+    </ng-container>
+
+  <ion-item>
+    <ion-label position="floating">Type Echo</ion-label>
+    <ion-input clearInput [(ngModel)]="echoer"></ion-input>
+  </ion-item>
+
+<ng-container *ngIf="state == true;">
+  <ion-button  (click)="send()" expand="block" disabled>
+    <ion-icon name="send"></ion-icon>
+    &nbsp; SEND
+  </ion-button>
+</ng-container>
+
+<ng-container *ngIf="state == false;">
+  <ion-button (click)="send()" expand="block">
+    <ion-icon name="send"></ion-icon>
+    &nbsp; SEND
+  </ion-button>
+</ng-container>
+
+
+  <ion-button  (click)="clear()" expand="block" color="tertiary">
+    <ion-icon name="close"></ion-icon>
+    &nbsp; CLEAR
+  </ion-button>
+
+  <ion-list lines="none">
+    <ion-list-header>
+      <ion-label>RETURNS:</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let item of items">
+        {{item}}
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

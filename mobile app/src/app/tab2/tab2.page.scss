@@ -1,0 +1,86 @@
+@font-face {
+  font-family: 'Futura';
+  src: url('../../assets/fonts/futur.ttf');
+}
+
+@font-face {
+  font-family: 'Futura Light';
+  src: url('../../assets/fonts/futura light bt.ttf');
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+
+  background-color: black;
+
+}
+
+ion-content {
+  --overflow: hidden;
+}
+
+p {
+  font-size: 2vw;
+}
+
+.gl-container {
+  position: absolute;
+  left: 50%;
+  margin-left: -21.5vw;
+  top: 40%;
+  color: white;
+  text-align: center;
+}
+
+
+.glitch{
+  color:white;
+  font-size:6vw;
+  position:relative;
+  margin:0 auto;
+  white-space: nowrap;
+
+  font-family: 'Futura Light';
+}
+@keyframes noise-anim{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(100)+px,9999px,random(100)+px,0);
+    }
+  }
+}
+.glitch:after{
+  content:attr(data-text);
+  position:absolute;
+  left:2px;
+  text-shadow:-1px 0 red;
+  top:0;
+  color:white;
+  background:black;
+  overflow:hidden;
+  clip:rect(0,900px,0,0);
+  animation:noise-anim 2s infinite linear alternate-reverse;
+}
+
+@keyframes noise-anim-2{
+  $steps:20;
+  @for $i from 0 through $steps{
+    #{percentage($i*(1/$steps))}{
+      clip:rect(random(100)+px,9999px,random(100)+px,0);
+    }
+  }
+}
+.glitch:before{
+  content:attr(data-text);
+  position:absolute;
+  left:-2px;
+  text-shadow:1px 0 blue;
+  top:0;
+  color:white;
+  background:black;
+  overflow:hidden;
+  clip:rect(0,900px,0,0);
+  animation:noise-anim-2 3s infinite linear alternate-reverse;
+}

@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-title>
+      About Us
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="welcome-card" color="light">
+      <img src="/assets/images/robot_simple.png" alt="" />
+      <ion-card-header>
+        <ion-card-subtitle>INTRO</ion-card-subtitle>
+        <ion-card-title>How to drive a Battlebot</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>In order to drive a Battlebot you must:</p>
+        <ion-list color="light" class="le">
+          <ion-item color="light">
+            <ion-label> 1. Connect to the Battlebot wifi network.</ion-label>
+          </ion-item>
+          <ion-item color="light">
+            <ion-label> 2. Navigate to the control page.</ion-label>
+          </ion-item>
+          <ion-item color="light">
+
+            <ion-label> 3. Try not to crash!</ion-label>
+          </ion-item>
+
+        </ion-list>
+
+      </ion-card-content>
+
+    </ion-card>
+
+    <ion-list lines="none">
+      <ion-list-header>
+        <ion-label>NOTES:</ion-label>
+      </ion-list-header>
+        <ion-item>
+      <ion-icon slot="start" name="alert"></ion-icon>
+      <ion-label> If the Battlebot begins to beep, disconnect and charge the battery immediately.</ion-label>
+        </ion-item>
+        <ion-item>
+      <ion-icon slot="start" name="alert"></ion-icon>
+      <ion-label> Application set permanently to 192.168.100.1:9999.</ion-label>
+        </ion-item>
+        <ion-item>
+      <ion-icon slot="start" name="bluetooth"></ion-icon>
+      <ion-label> This application supports bluetooth controllers.</ion-label>
+        </ion-item>
+    </ion-list>
+
+    <ion-list lines="none">
+      <ion-list-header>
+        <ion-label>RESOURCES</ion-label>
+      </ion-list-header>
+      <ion-item (click)="openBlank('https://ccgsrobotics.github.io')">
+        <ion-icon slot="start" color="medium" name="globe"></ion-icon>
+        <ion-label>Our Website</ion-label>
+      </ion-item>
+      <ion-item (click)="openBlank('https://github.com/CCGSRobotics')">
+        <ion-icon slot="start" color="medium" name="logo-github"></ion-icon>
+        <ion-label>Our Github</ion-label>
+      </ion-item>
+      <ion-item  (click)="openBlank('https://www.thingiverse.com/groups/ccgs-robotics/things')">
+        <ion-icon slot="start" color="medium" name="cube"></ion-icon>
+        <ion-label>Our Thingiverse</ion-label>
+      </ion-item>
+      <ion-item (click)="chat()">
+        <ion-icon slot="start" name="chatbubbles" color="medium"></ion-icon>
+        <ion-label>BattleBot ChatRoom</ion-label>
+      </ion-item>
+      <ion-item (click)="control()">
+        <ion-icon slot="start" name="thunderstorm" color="medium"></ion-icon>
+        <ion-label>Overide to Control</ion-label>
+      </ion-item>
+    </ion-list>
+</ion-content>
