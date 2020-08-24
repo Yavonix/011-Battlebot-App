@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Router } from '@angular/router';
 
-// Homepage, very little required
+// Homepage
 
 @Component({
   selector: 'app-tab1',

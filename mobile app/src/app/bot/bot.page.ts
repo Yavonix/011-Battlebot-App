@@ -45,7 +45,7 @@ export class BotPage {
       toast.present();
     }
 
-  // Function to copy text to the clipboard
+  // Function to copy text to the clipboard. Creates a new element on the document as this seemed to be the easiest solution
   clipboard(code:any) {
     const el = document.createElement('textarea');
     el.value = code;

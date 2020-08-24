@@ -73,6 +73,7 @@ async def qrSend():
     while True:
         print("background task")
         await sio.sleep(10)
+        #Dummy values sent for testing
         await sio.emit('zbar', ["https://google.com", "ccgsrobotics.github.io"])
 
 app.router.add_get('/', index)
