@@ -6,5 +6,5 @@ Is an ionic angular mobile app which communicates to a python server using webso
 
 #### Repo Structure
 - **Concept Art**. Located under ```/adobe illustrator```. Contains the design inspiration. 
-- **Python Server**. Located under ```/testing servers```. Contains the server logic intended to run on the robot.
+- **Python Server**. Located under ```/server```. Contains the server logic intended to run on the robot.
 - **Mobile App**. Located under ```/mobile app```. Contains the ionic mobile app itself. Setup instructions [here](https://github.com/Yavonix/011-Battlebot-App/tree/master/mobile%20app).
