@@ -12,7 +12,7 @@ Install ionic tooling
 npm install -g @ionic/cli native-run cordova-res
 ```
 
-Now run the development server:
+Run the development server:
 
 ```bash
 ionic serve

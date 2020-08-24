@@ -2,7 +2,7 @@
  
 Uploaded as past of my `something awesome` project for UNSW HS1917.
 
-Is an ionic angular mobile app which communicates to a python server using websockets. Built with the intention of being a cross-platform remote control for small diy robots.
+Is an ionic angular mobile app which communicates to a python server using websockets. Built with the intention of being a cross-platform remote control for small diy robots, specifically the CCGS Robotics BattleBots.
 
 #### Repo Structure
 - **Concept Art**. Located under ```/adobe illustrator```. Contains the design inspiration. 
