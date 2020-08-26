@@ -139,13 +139,6 @@ export class BotPage {
      }
    },1000);
 
-    //if(this.canGame() === null) {
-    //  this.controller = true;
-    //  this.x = setInterval(() => { this.reportOnGamepad(); }, 10);
-    //} else {
-    //  console.log("no game")
-    //}
-
   }
 
   // Disposes variables on route change
