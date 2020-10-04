@@ -1,3 +1,5 @@
+# Taken from https://github.com/CCGSRobotics/CCGSRobotics-battlebots
+
 from pyax12.connection import Connection
 servo_connection = Connection(port="/dev/ttyACM0", baudrate=1000000)
 
